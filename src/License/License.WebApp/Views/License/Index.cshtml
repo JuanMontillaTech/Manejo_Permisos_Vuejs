@@ -1,0 +1,53 @@
+﻿
+@{
+    ViewData["Title"] = "Manejo de licencias";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div id="app">
+    <div class="card ">
+        <div class="card-header text-white bg-success">
+            Listado de permisos   
+        </div>
+        <div class="card-body">
+            <table class="table table-hover ">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Tipo Permiso</th>
+                        <th>Fecha Permiso</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <template v-for="( License, index) in LicenseList">
+                        <tr>
+                            <td>{{License.fullName}}</td>
+                            <td>{{License.licenseType}}</td>
+                            <td>{{License.licensesDate}}</td>
+                            <td>
+                                <a :href="'/License/Edit/' + License.id" class="btn btn-primary"> <i class="fas fa-edit"></i></a>
+                                <button v-on:click="ConfirmarEliminar(License.id, License.fullName )"  class="btn btn-danger"> <i class="far fa-trash-alt"></i></button>
+                            </td>
+
+                        </tr>
+                    </template>
+
+                </tbody>
+
+            </table>
+
+        </div> <div class="card-footer text-muted">
+    <a asp-action="Create" asp-in class="btn btn-primary">Nuevo Permiso</a>
+</div>
+
+    </div>
+
+</div>
+
+
+@section scripts{
+
+    <script src="~/js/Vue/Licences.Vue.js"></script>
+
+
+}
