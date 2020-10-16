@@ -23,7 +23,25 @@ namespace License.Models.Context
             modelBuilder.Entity<Licenses>(mbl =>
             {
                 mbl.HasOne(x => x.LicenseType).WithMany(x => x.License).HasForeignKey(x => x.LicenseTypeID);
-            });
+            }); 
+            modelBuilder.Entity<LicenseType>()
+             .HasData(
+              new LicenseType
+              {
+
+                  Name = "enfermedad",
+                  CreatedDate = DateTime.Now,
+                  LastModifiedDate = DateTime.Now
+              },
+              new LicenseType
+              {
+
+                  Name = "diligencias",
+                  CreatedDate = DateTime.Now,
+                  LastModifiedDate = DateTime.Now
+
+              }
+             );
 
         }
         #region AuditAndIdCompletions
